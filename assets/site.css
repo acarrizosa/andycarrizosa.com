@@ -1,0 +1,475 @@
+/* Sitio de Andrés Carrizosa
+   Plan: papel claro con un leve tono verde, tinta verde casi negra, verde yerba como color principal
+   y ocre para subrayados. Títulos en Archivo ancha; textos para leer en Faustina.
+   Diseño: todo alineado a la izquierda, con una columna angosta al margen para años y fechas.
+   El hemiciclo de 45 bancas (el Senado paraguayo) es el único elemento llamativo. */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("fonts/archivo-latin-wdth-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Faustina";
+  src: url("fonts/faustina-latin-wght-normal.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Faustina";
+  src: url("fonts/faustina-latin-wght-italic.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --papel: #f5f7f4;
+  --tinta: #17201b;
+  --gris: #58635c;
+  --linea: #d7ded9;
+  --yerba: #2d5c44;
+  --ocre: #c4891e;
+  --sobre-yerba: #f5f7f4;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --texto: "Faustina", Georgia, "Times New Roman", serif;
+  --ancho: 72rem;
+  --margen: 8.5rem;
+  --canal: clamp(1rem, 4vw, 2.5rem);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --papel: #0f1512;
+    --tinta: #e4ebe6;
+    --gris: #a0ada5;
+    --linea: #28332d;
+    --yerba: #8dc4a5;
+    --ocre: #e2b252;
+    --sobre-yerba: #0f1512;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --papel: #0f1512;
+  --tinta: #e4ebe6;
+  --gris: #a0ada5;
+  --linea: #28332d;
+  --yerba: #8dc4a5;
+  --ocre: #e2b252;
+  --sobre-yerba: #0f1512;
+  color-scheme: dark;
+}
+
+/* Base */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--texto);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-optical-sizing: auto;
+}
+img, svg { max-width: 100%; }
+p { margin: 0; }
+cite { font-style: italic; }
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--ocre);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+a:hover { color: var(--yerba); }
+:focus-visible {
+  outline: 3px solid var(--yerba);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.saltar {
+  position: absolute;
+  left: -999rem;
+  top: 0.75rem;
+  background: var(--papel);
+  padding: 0.5rem 1rem;
+  font-family: var(--display);
+  z-index: 10;
+}
+.saltar:focus { left: 1rem; }
+
+.envoltura {
+  max-width: var(--ancho);
+  margin-inline: auto;
+  padding-inline: var(--canal);
+}
+
+/* Cabecera */
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-block: 1.5rem;
+}
+.marca {
+  font-family: var(--display);
+  font-stretch: 112%;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  font-family: var(--display);
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+.nav a { text-decoration: none; padding-block: 0.25rem; }
+.nav a:hover { text-decoration: underline; text-decoration-color: var(--ocre); }
+.nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--ocre);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.45em;
+}
+
+/* Portada */
+.portada {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: end;
+  padding-block: clamp(2rem, 6vw, 4.5rem) clamp(3rem, 6vw, 4.5rem);
+}
+.nombre {
+  font-family: var(--display);
+  font-stretch: 125%;
+  font-weight: 800;
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+}
+.nombre span { display: block; }
+.rol {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.35;
+  margin-bottom: 1.5rem;
+}
+.entrada {
+  font-size: 1.25rem;
+  line-height: 1.55;
+  max-width: 34em;
+}
+.entrada + .entrada { margin-top: 1rem; }
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 2rem;
+}
+.boton {
+  display: inline-block;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid var(--yerba);
+  border-radius: 3px;
+}
+.boton-principal { background: var(--yerba); color: var(--sobre-yerba); }
+.boton-principal:hover {
+  color: var(--sobre-yerba);
+  background: color-mix(in srgb, var(--yerba) 82%, var(--tinta));
+  border-color: color-mix(in srgb, var(--yerba) 82%, var(--tinta));
+}
+.boton-secundario { color: var(--yerba); }
+.boton-secundario:hover { background: color-mix(in srgb, var(--yerba) 10%, transparent); }
+.enlace-simple { font-family: var(--display); font-weight: 600; font-size: 1rem; }
+
+.hemiciclo { margin: 0; }
+.hemiciclo svg { display: block; width: 100%; height: auto; }
+.hemiciclo circle { fill: var(--yerba); }
+.hemiciclo figcaption {
+  margin-top: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--gris);
+  max-width: 28em;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hemiciclo circle {
+    animation: banca 450ms ease-out backwards;
+    animation-delay: calc(var(--i) * 26ms + 200ms);
+  }
+}
+@keyframes banca {
+  from { fill: var(--linea); }
+}
+
+/* Secciones */
+/* La línea de arriba de cada sección queda alineada con el texto, no con el borde de la caja. */
+.seccion {
+  background-image: linear-gradient(var(--linea), var(--linea));
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: calc(100% - 2 * var(--canal)) 1px;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+.seccion-cabeza {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-bottom: 2.25rem;
+}
+h1, h2, h3 { text-wrap: balance; }
+.titulo-seccion {
+  font-family: var(--display);
+  font-stretch: 112%;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.titulo-pagina {
+  font-family: var(--display);
+  font-stretch: 125%;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 6vw, 4.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+}
+.cabeza-pagina { padding-block: clamp(2rem, 5vw, 3.5rem) clamp(2rem, 4vw, 3rem); }
+.cabeza-pagina .entrada { max-width: 36em; }
+
+/* Listas con columna al margen */
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2.25rem;
+}
+.fila {
+  display: grid;
+  grid-template-columns: var(--margen) minmax(0, 1fr);
+  gap: 0 2rem;
+}
+.fecha {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--gris);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.3rem;
+}
+.medio {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 1rem;
+  font-family: var(--display);
+  font-size: 0.92rem;
+  color: var(--gris);
+  margin-bottom: 0.4rem;
+}
+.medio strong { color: var(--tinta); font-weight: 600; }
+.titulo-escrito {
+  font-family: var(--texto);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+  max-width: 36em;
+}
+.titulo-escrito a { text-decoration-color: transparent; }
+.titulo-escrito a:hover,
+.titulo-escrito a:focus-visible { text-decoration-color: var(--ocre); }
+.resumen { color: var(--gris); max-width: 38em; }
+
+/* Bloques por año o por tipo (blog y publicaciones) */
+.grupo {
+  display: grid;
+  grid-template-columns: var(--margen) minmax(0, 1fr);
+  gap: 0.75rem 2rem;
+  border-top: 1px solid var(--linea);
+  padding-block: 2.25rem;
+}
+.grupo-titulo {
+  font-family: var(--display);
+  font-stretch: 125%;
+  font-weight: 800;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  color: var(--yerba);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.grupo-titulo.texto { font-stretch: 112%; font-weight: 700; font-size: 1.15rem; color: var(--tinta); padding-top: 0.2rem; }
+
+/* Filtros del blog */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+.filtro {
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--tinta);
+  background: transparent;
+  border: 1.5px solid var(--linea);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  cursor: pointer;
+}
+.filtro:hover { border-color: var(--yerba); }
+.filtro .cuenta { font-weight: 500; color: var(--gris); }
+.filtro[aria-pressed="true"] { background: var(--tinta); border-color: var(--tinta); color: var(--papel); }
+.filtro[aria-pressed="true"] .cuenta { color: inherit; opacity: 0.75; }
+.estado { font-family: var(--display); font-size: 0.92rem; color: var(--gris); margin-top: 0.85rem; }
+
+/* Qué hago */
+.areas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.25rem 3.5rem;
+}
+.area h3 {
+  font-family: var(--display);
+  font-stretch: 105%;
+  font-weight: 650;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin: 0 0 0.45rem;
+}
+.area p { color: var(--gris); max-width: 32em; }
+
+/* Trayectoria */
+.cargo {
+  font-family: var(--display);
+  font-weight: 650;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  margin: 0;
+}
+.organizacion { font-family: var(--display); font-size: 0.98rem; color: var(--gris); margin: 0.15rem 0 0.5rem; }
+.detalle { max-width: 38em; }
+.detalle li + li { margin-top: 0.35rem; }
+ul.detalle { margin: 0; padding-left: 1.1rem; }
+
+/* Libro */
+.libro {
+  display: grid;
+  grid-template-columns: 10.5rem minmax(0, 1fr);
+  gap: 2.25rem;
+  align-items: start;
+}
+.tapa {
+  aspect-ratio: 155 / 235;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 0.85rem 0.9rem 1.1rem;
+  background: var(--yerba);
+  color: var(--sobre-yerba);
+  border-radius: 2px 5px 5px 2px;
+  box-shadow: inset 7px 0 0 color-mix(in srgb, var(--tinta) 22%, transparent);
+}
+.tapa-titulo {
+  font-family: var(--display);
+  font-stretch: 120%;
+  font-weight: 800;
+  font-size: 1.2rem;
+  line-height: 1.02;
+}
+.tapa-sub { display: block; margin-top: 0.5rem; font-family: var(--display); font-size: 0.72rem; line-height: 1.3; }
+.tapa-autor {
+  font-family: var(--display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-top: 3px solid var(--ocre);
+  padding-top: 0.45rem;
+}
+.libro .medio { margin-bottom: 0.75rem; }
+.libro .acciones { margin-top: 1.25rem; }
+
+/* Citas académicas */
+.cita { max-width: 40em; }
+.cita + .resumen { margin-top: 0.5rem; }
+.pub + .pub { margin-top: 2rem; }
+.doi { font-family: var(--display); font-size: 0.92rem; margin-top: 0.5rem; }
+
+/* Pie */
+.pie {
+  border-top: 1px solid var(--linea);
+  padding-block: 2.5rem 3rem;
+  font-family: var(--display);
+  font-size: 0.98rem;
+}
+.pie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem 3rem;
+}
+.pie-titulo {
+  font-family: var(--display);
+  font-stretch: 112%;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin: 0 0 0.35rem;
+}
+.contacto {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+.derechos { color: var(--gris); font-size: 0.9rem; }
+
+/* Pantallas angostas */
+@media (max-width: 54rem) {
+  .portada { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .hemiciclo { max-width: 27rem; }
+}
+@media (max-width: 44rem) {
+  .areas { grid-template-columns: minmax(0, 1fr); }
+  .fila,
+  .grupo { grid-template-columns: minmax(0, 1fr); }
+  .fecha { padding-top: 0; margin-bottom: 0.2rem; }
+  .libro { grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1.25rem; }
+  .tapa-titulo { font-size: 0.95rem; }
+  .tapa-sub { font-size: 0.62rem; }
+}
