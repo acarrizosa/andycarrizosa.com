@@ -225,7 +225,7 @@ a:hover { color: var(--yerba); }
 .boton-secundario:hover { background: color-mix(in srgb, var(--yerba) 10%, transparent); }
 .enlace-simple { font-family: var(--display); font-weight: 600; font-size: 1rem; }
 
-.hemiciclo { margin: 0; }
+.hemiciclo { margin: 0; align-self: center; }
 .hemiciclo svg { display: block; width: 100%; height: auto; }
 .hemiciclo circle { fill: var(--yerba); }
 .hemiciclo figcaption {
@@ -235,10 +235,12 @@ a:hover { color: var(--yerba); }
   color: var(--gris);
   max-width: 28em;
 }
+.hemiciclo circle.bloque-a { fill: var(--yerba); }
+.hemiciclo circle.bloque-b { fill: var(--ocre); }
 @media (prefers-reduced-motion: no-preference) {
   .hemiciclo circle {
     animation: banca 450ms ease-out backwards;
-    animation-delay: calc(var(--i) * 26ms + 200ms);
+    animation-delay: calc(var(--orden, var(--i)) * 45ms + 250ms);
   }
 }
 @keyframes banca {
@@ -371,6 +373,44 @@ h1, h2, h3 { text-wrap: balance; }
 .filtro[aria-pressed="true"] { background: var(--tinta); border-color: var(--tinta); color: var(--papel); }
 .filtro[aria-pressed="true"] .cuenta { color: inherit; opacity: 0.75; }
 .estado { font-family: var(--display); font-size: 0.92rem; color: var(--gris); margin-top: 0.85rem; }
+
+/* Tarjetas de la portada (Artículos mediáticos) */
+.tarjetas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.tarjeta {
+  position: relative;
+  min-height: 17rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.25rem 1.1rem;
+  border: 1px solid var(--linea);
+  border-top: 4px solid var(--yerba);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--papel) 85%, var(--linea));
+  transition: border-color 0.15s, transform 0.15s;
+}
+.tarjeta:hover { border-color: var(--yerba); transform: translateY(-2px); }
+.tarjeta:hover .titulo-escrito a { text-decoration-color: var(--ocre); }
+.tarjeta .medio { margin-bottom: 0.75rem; }
+.tarjeta .titulo-escrito { font-size: 1.2rem; line-height: 1.28; margin-bottom: 0.6rem; }
+.tarjeta .titulo-escrito a::after { content: ""; position: absolute; inset: 0; }
+.tarjeta .resumen { font-size: 0.98rem; line-height: 1.5; }
+.tarjeta-fecha {
+  margin-top: auto;
+  padding-top: 0.9rem;
+  font-family: var(--display);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--gris);
+  font-variant-numeric: tabular-nums;
+}
+.tarjetas + .acciones { margin-top: 2rem; }
 
 /* Qué hago */
 .areas {
@@ -558,10 +598,13 @@ ul.detalle { margin: 0; padding-left: 1.1rem; }
 
 /* Pantallas angostas */
 @media (max-width: 54rem) {
+  .tarjetas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .portada { grid-template-columns: minmax(0, 1fr); align-items: start; }
-  .hemiciclo { max-width: 27rem; }
+  .hemiciclo { max-width: 27rem; width: 100%; justify-self: center; }
 }
 @media (max-width: 44rem) {
+  .tarjetas { grid-template-columns: minmax(0, 1fr); }
+  .tarjeta { min-height: 0; }
   .areas { grid-template-columns: minmax(0, 1fr); }
   .fila,
   .grupo { grid-template-columns: minmax(0, 1fr); }
