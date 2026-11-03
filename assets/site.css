@@ -132,6 +132,22 @@ a:hover { color: var(--yerba); }
   font-size: 1.05rem;
   text-decoration: none;
 }
+.redes {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  align-self: center;
+}
+.redes a {
+  display: inline-flex;
+  color: var(--tinta);
+  padding: 0.25rem;
+  margin: -0.25rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.redes a:hover { color: var(--yerba); border-bottom-color: var(--ocre); }
+.redes svg { width: 1.2rem; height: 1.2rem; fill: currentColor; display: block; }
 .nav {
   display: flex;
   flex-wrap: wrap;
@@ -427,6 +443,105 @@ ul.detalle { margin: 0; padding-left: 1.1rem; }
 .cita + .resumen { margin-top: 0.5rem; }
 .pub + .pub { margin-top: 2rem; }
 .doi { font-family: var(--display); font-size: 0.92rem; margin-top: 0.5rem; }
+
+/* Artículos propios */
+.titulo-articulo { font-size: clamp(2rem, 5vw, 3.4rem); max-width: 18em; }
+.cabeza-pagina .medio a { color: var(--yerba); font-weight: 600; text-decoration: none; }
+.articulo {
+  max-width: 38em;
+  border-top: 1px solid var(--linea);
+  padding-block: 2.25rem 1rem;
+}
+.articulo > p + p { margin-top: 1.1rem; }
+.articulo h2 {
+  font-family: var(--display);
+  font-stretch: 112%;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 2.75rem 0 1rem;
+}
+.articulo h3 {
+  font-family: var(--display);
+  font-weight: 650;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin: 2rem 0 0.75rem;
+}
+.articulo .destacado {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  border-left: 4px solid var(--ocre);
+  padding-left: 1.1rem;
+  margin-block: 1.75rem;
+}
+.articulo .nota-datos {
+  margin-top: 2.5rem;
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.cuadro .izq { text-align: left; }
+.cuadro tr.superfluo td { background: color-mix(in srgb, var(--ocre) 22%, transparent); }
+.cuadro tr.superfluo td:first-child { padding-left: 0.4rem; }
+.articulo sup a { text-decoration: none; color: var(--yerba); font-weight: 700; padding-inline: 0.1em; }
+.articulo figure { margin: 2rem 0; }
+.articulo figcaption {
+  font-family: var(--display);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--gris);
+  margin-top: 0.65rem;
+}
+.cuadro-scroll { overflow-x: auto; }
+.cuadro table {
+  border-collapse: collapse;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
+.cuadro caption {
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.98rem;
+  padding-bottom: 0.6rem;
+}
+.cuadro th, .cuadro td {
+  padding: 0.45rem 0.8rem;
+  text-align: right;
+  border-bottom: 1px solid var(--linea);
+  white-space: nowrap;
+}
+.cuadro th:first-child, .cuadro td:first-child { padding-left: 0; }
+.cuadro th[scope="row"] { text-align: left; font-weight: 600; }
+.cuadro thead th { font-weight: 600; color: var(--gris); border-bottom: 2px solid var(--tinta); }
+.cuadro tfoot th, .cuadro tfoot td { font-weight: 700; border-top: 2px solid var(--tinta); border-bottom: 0; }
+.cuadro td.electo {
+  background: color-mix(in srgb, var(--yerba) 16%, transparent);
+  color: var(--tinta);
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--ocre);
+}
+.cuadro td.total { font-weight: 800; color: var(--yerba); padding-left: 1.2rem; }
+.grafico img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: 3px;
+}
+.notas {
+  margin-top: 2.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--linea);
+  font-size: 1rem;
+  color: var(--gris);
+}
+.notas a { color: var(--yerba); font-weight: 700; text-decoration: none; }
+.volver { margin-top: 2.5rem; }
 
 /* Pie */
 .pie {

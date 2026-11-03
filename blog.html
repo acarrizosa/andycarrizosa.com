@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,12 +36,12 @@
       <h1 class="titulo-pagina">Blog y artículos</h1>
       <p class="entrada">Columnas, entrevistas y textos de mi blog sobre partidos, el Congreso y las reglas electorales del Paraguay.</p>
       <div class="filtros" role="group" aria-label="Mostrar por tipo de texto">
-        <button class="filtro" type="button" data-filtro="todos" aria-pressed="true">Todos <span class="cuenta">8</span></button>
+        <button class="filtro" type="button" data-filtro="todos" aria-pressed="true">Todos <span class="cuenta">9</span></button>
         <button class="filtro" type="button" data-filtro="blog" aria-pressed="false">Mi blog <span class="cuenta">4</span></button>
-        <button class="filtro" type="button" data-filtro="columna" aria-pressed="false">Columnas <span class="cuenta">2</span></button>
+        <button class="filtro" type="button" data-filtro="columna" aria-pressed="false">Columnas <span class="cuenta">3</span></button>
         <button class="filtro" type="button" data-filtro="entrevista" aria-pressed="false">Entrevistas <span class="cuenta">2</span></button>
       </div>
-      <p class="estado" id="estado-filtro" aria-live="polite">Mostrando 8 de 8 textos.</p>
+      <p class="estado" id="estado-filtro" aria-live="polite">Mostrando 9 de 9 textos.</p>
     </div>
 
     <div class="envoltura">
@@ -70,9 +70,14 @@
       <section class="grupo" data-grupo aria-labelledby="a2022">
         <h2 class="grupo-titulo" id="a2022">2022</h2>
         <ol class="lista">
+          <li data-tipo="columna">
+            <p class="medio"><strong>Tereré Cómplice</strong><span>Columna de opinión, en inglés</span><time datetime="2022-11-07">7 de noviembre</time></p>
+            <h3 class="titulo-escrito"><a href="https://tererecomplice.com/en/2022/11/07/why-paraguay-is-corrupt-in-international-markets/" lang="en" hreflang="en">Why Paraguay is Corrupt in International Markets (And What We Can Do About It)</a></h3>
+            <p class="resumen">Tras la designación de Horacio Cartes y Hugo Velázquez como «significativamente corruptos» por parte de Estados Unidos, se pregunta si estas acusaciones pueden de verdad poner al Paraguay en camino de ser menos corrupto.</p>
+          </li>
           <li data-tipo="blog">
             <p class="medio"><strong>Mi blog</strong><span>Con datos y código</span></p>
-            <h3 class="titulo-escrito"><a href="https://www.andycarrizosa.com/blogs-and-articles-spanish/sin-concertaci%C3%B3n-la-oposici%C3%B3n-regala-bancas">Sin concertación legislativa la oposición regala bancas a la ANR</a></h3>
+            <h3 class="titulo-escrito"><a href="articulos/2022-sin-concertacion.html">Sin concertación legislativa la oposición regala bancas a la ANR</a></h3>
             <p class="resumen">Una simulación con los resultados de las municipales de 2021. Con listas únicas, la oposición habría ganado entre 7 y 140 concejalías más y la mayoría en hasta 40 juntas municipales más, según el escenario.</p>
           </li>
         </ol>
@@ -93,17 +98,17 @@
           </li>
           <li data-tipo="blog">
             <p class="medio"><strong>Mi blog</strong><time datetime="2021-08-22">22 de agosto</time></p>
-            <h3 class="titulo-escrito"><a href="https://www.andycarrizosa.com/blogs-and-articles-spanish/2021-22-08_fragmentacion">Por qué las listas desbloqueadas en las elecciones generales pueden ser muy desestabilizadoras</a></h3>
+            <h3 class="titulo-escrito"><a href="articulos/2021-08-22-fragmentacion.html">Por qué las listas desbloqueadas en las elecciones generales pueden ser muy desestabilizadoras</a></h3>
             <p class="resumen">La fragmentación política desestabilizó al Paraguay más de una vez en su historia, y las listas desbloqueadas en las elecciones generales la fomentan.</p>
           </li>
           <li data-tipo="blog">
             <p class="medio"><strong>Mi blog</strong><time datetime="2021-03-04">4 de marzo</time></p>
-            <h3 class="titulo-escrito"><a href="https://www.andycarrizosa.com/blogs-and-articles-spanish/2021-03-04-bandidos">Lo peor que le podemos hacer a nuestra democracia es limitar la reelección de los legisladores y destruir a los partidos políticos</a></h3>
+            <h3 class="titulo-escrito"><a href="articulos/2021-03-04-bandidos.html">Lo peor que le podemos hacer a nuestra democracia es limitar la reelección de los legisladores y destruir a los partidos políticos</a></h3>
             <p class="resumen">Usa la idea de los «bandidos estacionarios» de Mancur Olson para explicar por qué limitar la reelección acorta el horizonte de los políticos, y por qué los partidos ayudan a frenarlos.</p>
           </li>
           <li data-tipo="blog">
             <p class="medio"><strong>Mi blog</strong><time datetime="2021-02-18">18 de febrero</time></p>
-            <h3 class="titulo-escrito"><a href="https://www.andycarrizosa.com/blogs-and-articles-spanish/2021-02-18c%C3%B3mo-van-a-funcionar-las-listas-abiertas-en-el-paraguay">¿Cómo van a funcionar las listas abiertas en el Paraguay?</a></h3>
+            <h3 class="titulo-escrito"><a href="articulos/2021-02-18-listas-abiertas.html">¿Cómo van a funcionar las listas abiertas en el Paraguay?</a></h3>
             <p class="resumen">Cómo funcionan las listas cerradas pero desbloqueadas de la Ley 6318, el voto preferencial y el método D’Hondt en las municipales de 2021.</p>
           </li>
         </ol>
@@ -113,10 +118,6 @@
 
   <footer class="pie">
     <div class="envoltura pie-grid">
-      <div>
-        <h2 class="pie-titulo">Contacto</h2>
-        <p><a href="mailto:acarrizosa@gmail.com">acarrizosa@gmail.com</a></p>
-      </div>
       <ul class="contacto" aria-label="Perfiles">
         <li><a href="https://www.linkedin.com/in/andycarrizosa/">LinkedIn</a></li>
         <li><a href="https://github.com/acarrizosa">GitHub</a></li>

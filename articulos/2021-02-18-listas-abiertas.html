@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>¿Cómo van a funcionar las listas abiertas en el Paraguay? · Andrés Carrizosa</title>
+  <meta name="description" content="Cómo funcionan las listas cerradas pero desbloqueadas de la Ley 6318, el voto preferencial y el método D’Hondt en las municipales de 2021.">
+  <link rel="canonical" href="https://www.andycarrizosa.com/articulos/2021-02-18-listas-abiertas.html">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/faustina-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/site.css">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="¿Cómo van a funcionar las listas abiertas en el Paraguay?">
+  <meta property="og:description" content="Cómo funcionan las listas cerradas pero desbloqueadas de la Ley 6318, el voto preferencial y el método D’Hondt en las municipales de 2021.">
+  <meta property="og:url" content="https://www.andycarrizosa.com/articulos/2021-02-18-listas-abiertas.html">
+  <meta property="og:image" content="https://www.andycarrizosa.com/assets/og.png">
+  <meta property="og:locale" content="es_PY">
+  <meta property="article:published_time" content="2021-02-18">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="envoltura cabecera">
+    <a class="marca" href="../index.html">Andrés Carrizosa</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="../blog.html">Blog y artículos</a>
+      <a href="../publicaciones.html">Publicaciones</a>
+      <a href="../cv/Andres_Carrizosa_CV.pdf">CV</a>
+      <a href="../en/index.html" lang="en" hreflang="en">English</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <article>
+      <header class="envoltura cabeza-pagina">
+        <p class="medio"><a href="../blog.html">Mi blog</a><time datetime="2021-02-18">18 de febrero de 2021</time></p>
+        <h1 class="titulo-pagina titulo-articulo">¿Cómo van a funcionar las listas abiertas en el Paraguay?</h1>
+        <p class="entrada">Cómo funcionan las listas cerradas pero desbloqueadas de la Ley 6318, el voto preferencial y el método D’Hondt en las municipales de 2021.</p>
+      </header>
+
+      <div class="envoltura">
+        <div class="articulo">
+      <p>Las <a href="https://tsje.gov.py/noticias/leer/8900-tribunal-superior-de-justicia-electoral-convoco-oficialmente-a-elecciones-municipales-para-el-2021.html">elecciones</a> internas municipales a llevarse a cabo el 20 de Junio del 2021 serán las primeras elecciones en el Paraguay donde se usará el modo de votación de “listas abiertas”<sup><a href="#nota-1" id="ref-1" aria-label="Nota 1">*</a></sup> en vez del sistema de “listas cerradas” que veníamos utilizando. La gran diferencia es que en vez de votar por una lista como un todo, los votantes van a tener la oportunidad de votar a individuos dentro de cada lista, y estos votos individuales van a poder cambiar el orden de las listas. Mucha gente celebró este avance como un cambio que empodera al ciudadano común. En vez de tener que aceptar la lista predeterminada por los partidos políticos, ahora la gente va a poder decidir, con su voto individual, quien entra y quien sale.</p>
+      <p>Pero también existen muchos argumentos en contra de las listas abiertas. Hay muchos estudios empíricos que sugieren que sistemas electorales que promueven la competencia intrapartidaria tienden a producir políticos menos programáticos y más particularistas (<a href="https://www.journals.uchicago.edu/doi/abs/10.1086/683073">ver</a>). Además, para que los ciudadanos puedan votar de manera coherente bajo un sistema de listas abiertas es necesario que estos ciudadanos estén extremadamente informados sobre la política, algo que es muy poco frecuente hasta en las democracias más avanzadas y educadas (<a href="https://www.amazon.com/dp/0190659939">ver</a>). Finalmente, incrementar la competencia intrapartidaria también puede reducir la disciplina de los partidos políticos a la hora de legislar, haciendo que sea más difícil que los partidos políticos cumplan con las promesas que hacen a sus ciudadanos (<a href="https://www.jstor.org/stable/i333592">ver</a>).</p>
+      <p>Pero antes de poder discutir en detalle los pro y los contra de las listas abiertas en relación a las listas cerradas, en este post solo voy a estar explorando qué significa en términos prácticos la “lista abierta” según lo que se aprobó en la <a href="http://silpy.congreso.gov.py/expediente/113167">Ley 6318</a> que modifica el Código Electoral del Paraguay. Para eso hay dos fórmulas que tenemos que entender. La primera fórmula es la famosa D’hondt, que traduce el voto de la gente en la cantidad de escaños que debería recibir cada partido en un cuerpo colegiado (como una cámara legislativa, o una junta municipal o gubenamental, etc.). La segunda fórmula que tenemos que entender es la que se utiliza para crear el orden adentro de las listas según los votos preferenciales de los ciudadanos. La Ley 6318 reglamentó lo que se llama en ciencia política el Voto Único No Transferible para el reordenamiento de las listas, y como discutiré en este post, esta fórmula crea algunos problemas de coordinación que candidatos y ciudadanos van a tener que anticipar a la hora de votar.</p>
+
+      <h2>La fórmula D’hondt</h2>
+      <p>La mejor manera de explicar cómo funciona el D’hondt es utilizando un ejemplo. Imagínense, que el reino Animal, después de muchas reformas graduales, eventualmente se convirtió en una monarquía democrática. En las últimas elecciones legislativas, tres partidos se presentaron: el Partido Mamífero, el Partido de Pescados y el Partido de los Pájaros. Tras una gran campaña los Pescados salieron victoriosos, los Mamíferos salieron segundos, y a los pobres Pájaros no les fue tan bien y salieron terceros con la siguiente distribución de votos para cada partido:</p>
+      <figure class="cuadro">
+        <table>
+          <caption>Resultados de la elección en el reino Animal</caption>
+          <thead><tr><th scope="col">Partido</th><th scope="col">Porcentaje</th><th scope="col">Votos</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Mamíferos</th><td>37,94%</td><td>1527</td></tr>
+            <tr><th scope="row">Pescados</th><td>44,67%</td><td>1798</td></tr>
+            <tr><th scope="row">Pájaros</th><td>17,39%</td><td>700</td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row">Total</th><td>100%</td><td>4025</td></tr></tfoot>
+        </table>
+      </figure>
+      <p>Asumamos también que el Congreso Animal sólo tiene diez (10) bancas—es un poder legislativo bastante pequeño—que tienen que ser distribuidas proporcionalmente entre los tres partidos según los votos que recibió cada uno. Si pudiésemos ser perfectamente proporcionales, los Mamíferos se llevarían 3,8 bancas, los pescados se llevarían 4,5 bancas y los Pájaros se llevarían 1,7 bancas. Lastimosamente, las bancas son indivisibles. El problema de la indivisibilidad de las bancas es lo que la fórmula D’hondt soluciona.</p>
+      <p>El funcionamiento del D’hondt es bastante simple. Lo único que se hace es se toma la cantidad de votos que recibió cada partido, y se divide por 1, 2, 3, 4, 5, 6, 7, etc. Una vez que se hizo esta división, como se muestra en la tabla de abajo, se eligen los números más altos hasta llegar a la cantidad de bancas que tiene una cámara legislativa. En el ejemplo de abajo, el número más grande es 1798, entonces Pescados recibe una banca, después viene 1527 entonces Mamíferos reciben otra banca, después viene 899 entonces Pescados reciben otra banca, después viene 763 entonces Mamíferos reciben otra banca y así sucesivamente. Al final la fórmula D’hondt entonces daría 5 bancas a los Pescados, 4 a los Mamíferos y 1 a los Pájaros.</p>
+      <figure class="cuadro">
+        <div class="cuadro-scroll">
+        <table>
+          <caption>Reparto de 10 bancas con la fórmula D’Hondt</caption>
+          <thead><tr><th scope="col">Partido</th><th scope="col">÷1</th><th scope="col">÷2</th><th scope="col">÷3</th><th scope="col">÷4</th><th scope="col">÷5</th><th scope="col">÷6</th><th scope="col">÷7</th><th scope="col">÷8</th><th scope="col">Bancas</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Mamíferos</th><td class="electo">1527</td><td class="electo">763,5</td><td class="electo">509</td><td class="electo">381,8</td><td>305,4</td><td>254,5</td><td>218,1</td><td>190,9</td><td class="total">4</td></tr>
+            <tr><th scope="row">Pescados</th><td class="electo">1798</td><td class="electo">899</td><td class="electo">599,3</td><td class="electo">449,5</td><td class="electo">359,6</td><td>299,7</td><td>256,9</td><td>224,8</td><td class="total">5</td></tr>
+            <tr><th scope="row">Pájaros</th><td class="electo">700</td><td>350</td><td>233,3</td><td>175</td><td>140</td><td>116,7</td><td>100</td><td>87,5</td><td class="total">1</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <figcaption>Fórmula D’Hondt. Las celdas marcadas son los diez cocientes más altos: cada una es una banca.</figcaption>
+      </figure>
+      <p>Lo importante que se tiene que notar sobre el D’hondt, es que esta fórmula favorece a los partidos más grandes. Si se mira al partido de los Pájaros podemos ver que a pesar de que el partido recibió casi el 20% de los votos, sólo recibió el 10% de las bancas, mientras que el partido de los Pescados recibió el 50% de las bancas y sólo obtuvo el 44% de los votos.</p>
+      <p>Para hacer un contraste, abajo muestro los mismos resultados calculados utilizando la fórmula St. Laguë. La fórmula St. Laguë es muy parecida a la D’hondt solo que en vez de dividir por 1,2,3,4, etc. el St. Laguë divide por 1,3,5,7,9, etc. Implementando ese cambio, y seleccionando los números más altos igual que como hicimos anteriormente, abajo podemos ver que los resultados del St. Laguë benefician un poco más al partido pequeño de los Pájaros. Con esta fórmula los Pescados recibirían 4 bancas, los Mamíferos recibirían 4 bancas y los Pescados 2.</p>
+      <figure class="cuadro">
+        <div class="cuadro-scroll">
+        <table>
+          <caption>Reparto de 10 bancas con la fórmula Sainte-Laguë</caption>
+          <thead><tr><th scope="col">Partido</th><th scope="col">÷1</th><th scope="col">÷3</th><th scope="col">÷5</th><th scope="col">÷7</th><th scope="col">÷9</th><th scope="col">÷11</th><th scope="col">÷13</th><th scope="col">÷15</th><th scope="col">Bancas</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Mamíferos</th><td class="electo">1527</td><td class="electo">509</td><td class="electo">305,4</td><td class="electo">218,1</td><td>169,7</td><td>138,8</td><td>117,5</td><td>101,8</td><td class="total">4</td></tr>
+            <tr><th scope="row">Pescados</th><td class="electo">1798</td><td class="electo">599,3</td><td class="electo">359,6</td><td class="electo">256,9</td><td>199,8</td><td>163,5</td><td>138,3</td><td>119,9</td><td class="total">4</td></tr>
+            <tr><th scope="row">Pájaros</th><td class="electo">700</td><td class="electo">233,3</td><td>140</td><td>100</td><td>77,8</td><td>63,6</td><td>53,8</td><td>46,7</td><td class="total">2</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <figcaption>Fórmula Sainte-Laguë. Las celdas marcadas son los diez cocientes más altos: cada una es una banca.</figcaption>
+      </figure>
+      <p>Habiendo dicho eso, la Ley 6318 mantuvo la fórmula D’hondt. El cambio a listas abiertas no afecta la cantidad de escaños que recibe cada partido, sino que afecta quiénes, dentro del partido, recibe cada escaño. Pero las listas abiertas sí podrían modificar cómo los Pájaros deciden competir electoralmente. Es decir, si el D’hondt favorece a los partidos grandes, y las listas abiertas permiten el reordenamiento de las listas de los partidos grandes, lo estratégico para los Pájaros sería correr adentro de uno de los dos partidos grandes como una corriente interna, y después utilizar el voto personal de estas listas para remediar la disproporcionalidad que la fórmula D’hondt crea para los partidos pequeños. En otras palabras, si los Pájaros corren como movimiento interno de los Mamíferos, los Pájaros tienen la oportunidad de conseguir dos escaños en vez de uno.</p>
+      <p>Habiendo dicho eso, el beneficio de las listas abiertas para las corrientes internas depende de la fórmula que se utiliza para reordenar las listas. La ley 6318 adoptó el Voto Único No Transferible como fórmula de ordenamiento de las listas. A continuación discuto cómo esta regla va a influenciar la manera que se comportan las corrientes internas de los partidos a la hora de competir electoralmente.</p>
+
+      <h2>Voto Único No Transferible (VUNT)</h2>
+      <p>Como vimos en la sección anterior, después de la aplicación del método D’hondt el partido de los Pescados recibió cinco escaños. Anteriormente, bajo el sistema de las listas cerradas, el orden de candidatos seleccionados para ocupar los escaños que corresponden al partido es establecido por el partido—y no por los votantes. Un ejemplo de la lista cerrada de los Pescados podría ser así:</p>
+      <figure class="cuadro">
+        <table>
+          <caption>Lista cerrada del partido de los Pescados</caption>
+          <thead><tr><th scope="col">Orden</th><th scope="col">Candidato</th><th scope="col">Calidad</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><th scope="row">Piraña</th><td>Malo</td></tr>
+            <tr><td>2</td><th scope="row">Surubí</th><td>Bueno</td></tr>
+            <tr><td>3</td><th scope="row">Pacú</th><td>Malo</td></tr>
+            <tr><td>4</td><th scope="row">Manguruyú</th><td>Bueno</td></tr>
+            <tr><td>5</td><th scope="row">Bagre</th><td>Malo</td></tr>
+            <tr><td>6</td><th scope="row">Patí</th><td>Bueno</td></tr>
+            <tr><td>7</td><th scope="row">Raya</th><td>Malo</td></tr>
+            <tr><td>8</td><th scope="row">Dorado</th><td>Bueno</td></tr>
+          </tbody>
+        </table>
+      </figure>
+      <p>El problema de las listas cerradas es que los votantes no tienen capacidad de influenciar el orden de las listas. Digamos por ejemplo que alguien quiere votar por la lista de los Pescados, pero hay una corriente interna que no le gusta (llamémosle simplísticamente los “malos”) y hay otra corriente interna del partido que sí le gusta (llamémosle simplísticamente los “buenos”). En este caso al votar por los Pescados un ciudadano tendría que votar por ambas corrientes sin importar que una corriente le gusta y otra no. En este ejemplo, entonces, los Pescados recibieron cinco escaños, y sin modificar el orden de la lista entrarían tres Malos y solo dos Buenos. Otro problema es que algunos candidatos que son extremadamente populares pueden atraer a votantes a la lista pero después no ser elegidos por el sistema proporcional. En nuestro ejemplo, digamos que el Dorado es extremadamente popular, pero como esta número 8 en la lista no fue elegido—sin importar lo que quieren los ciudadanos en general.</p>
+      <p>El Voto Único No Transferible (VUNT) intenta solucionar este problema dándole a los votantes un voto preferencial que pueden dar a cualquier candidato adentro de la lista. Imaginemos que los Buenos, entonces, reciben el 66% de los votos del partido y los malos solo reciben el 34% del voto del partido. Asumiendo que los ciudadanos votan de esa manera, tal vez esperaríamos que el VUNT nos de un resultado donde tres Buenos son electos y solo dos Malos son electos del partido Pescado, ya que esto mantendría la proporcionalidad de los resultados relativo a los votos de los ciudadanos.</p>
+      <p>Pero como veremos, el VUNT no siempre mantiene la proporcionalidad porque los resultados que arroja el VUNT depende de cómo estan distribuidos los votos de los ciudadanos. Por ejemplo, como dijimos que el Dorado es un candidato muy popular, es posible que el Dorado capture la mayoría de los votos de la corriente de los Buenos. Si todos los votantes de los Buenos concentran sus votos en el Dorado, pero los Malos votan por sus candidatos de una manera más equitativa, es muy posible que ocurra el escenario de abajo. En este gráfico se muestra cómo es posible que, a pesar de que los Buenos recibieron más votos que los Malos, los Buenos sólo recibirían dos escaños y los Malos recibirían tres.</p>
+      <figure class="grafico">
+        <img src="img/listas-abiertas-votos-concentrados.png" width="1280" height="440" loading="lazy" alt="Gráfico de barras con los votos de cada candidato de los Pescados. El Dorado (Bueno) concentra cerca del 55% de los votos; le siguen Piraña, Pacú y Bagre (Malos) y Manguruyú (Bueno). Quedan afuera Patí, Raya y Surubí. Resultan electos dos Buenos y tres Malos.">
+        <figcaption>Problema de coordinación: votos concentrados en un candidato. Los cinco candidatos que están a la izquierda de la línea vertical resultan electos.</figcaption>
+      </figure>
+      <p>Para evitar que esto suceda, el Dorado, los demás miembros de los Buenos pueden coordinar con los votantes para intentar que no todos los votantes voten solo por el Dorado, sino que distribuyan sus votos más equitativamente entre todos los miembros de la corriente de los Buenos. Por ejemplo los partidos podrían hacer una aplicación en el celular que aleatoriamente elige a uno de los miembros de los Buenos para cada ciudadano antes de votar, o se puede pedir que los votantes elijan a tal o cual candidato según la tercera letra de su primer nombre, o la fecha de su cumpleaños, etc. Cualquier forma que los movimientos internos puedan organizar a sus votantes para que no concentren sus votos en un solo candidato podría traer mucho beneficio a la corriente interna. Por ejemplo, sin cambiar los totales de cada movimiento, si solo reordenamos los votos preferenciales de los Buenos para que estén distribuidos equitativamente entre los candidatos, los Buenos pueden lograr que cuatro Buenos y solo un Malo sean electos, a pesar de que recibieron el 60% de los votos.</p>
+      <figure class="grafico">
+        <img src="img/listas-abiertas-distribucion-optima.png" width="1280" height="422" loading="lazy" alt="Gráfico de barras con los votos de los Buenos repartidos en partes iguales entre sus cuatro candidatos. Resultan electos cuatro Buenos y un Malo.">
+        <figcaption>Distribución óptima para la corriente de Buenos. Los cinco candidatos que están a la izquierda de la línea vertical resultan electos.</figcaption>
+      </figure>
+      <p>El problema para la corriente de Buenos es que el Dorado tiene que tomar un riesgo muy grande al pedir que sus votantes distribuyan sus votos entre todos los candidatos de la corriente. En el último ejemplo presentado abajo los Buenos reciben tres escaños y los malos solo dos, pero el más popular de los Buenos, el Dorado, queda afuera porque los votantes se equivocaron y no votaron lo suficiente por él. Este último ejemplo demuestra lo difícil que podría llegar a ser la coordinación entre los mismos candidatos de una corriente interna, ya que lo que es bueno para el grupo no necesariamente es bueno para cada uno de los candidatos dentro del grupo.</p>
+      <figure class="grafico">
+        <img src="img/listas-abiertas-sobresacrificio.png" width="1280" height="394" loading="lazy" alt="Gráfico de barras en el que los Buenos reparten sus votos pero el Dorado recibe muy pocos. Resultan electos tres Buenos y dos Malos, y el Dorado queda afuera.">
+        <figcaption>Problema de coordinación: sobresacrificio de el Dorado.</figcaption>
+      </figure>
+
+      <h2>Conclusiones</h2>
+      <p>El propósito principal de este post era mostrar cómo el problema de coordinación entre los políticos y los votantes que crea el Voto Único No Transferible (VUNT). En futuros posts puedo discutir más a fondo las posibles alternativas al Voto Único No Transferible (VUNT). Por ejemplo, en Irlanda se utiliza una fórmula llamada el Voto Único Transferible (VUT) donde la necesidad de coordinación entre los votantes y los candidatos es menor, pero la fórmula del VUT es considerablemente más compleja que la del VUNT y a veces también puede producir resultados poco intuitivos. Pero como falta muy poco para las municipales, lo más probable es que no haya ninguna modificación al Código Electoral antes de entonces. Como es seguro que vamos a estar utilizando el VUNT en las próximas elecciones, es importante que todos entendamos exactamente cómo funcionaría este sistema en la práctica, y cuáles son sus efectos y limitaciones.</p>
+      <p>La primera conclusión de este post es que un efecto de haber adoptado las listas abiertas es que en el futuro probablemente tendremos menos partidos políticos. La posibilidad de reordenar las listas de los partidos grandes, combinados con la fórmula D’hondt que premia a los partidos más grandes, crea incentivos para que partidos pequeños prefieran volverse corrientes internas de los partidos más grandes. De esa manera esquivan las disproporcionalidades que crea el D’hondt para los partidos pequeños, y tienen la capacidad de recuperan escaños a través del voto preferencial dentro de los partidos grandes—escaños que certeramente hubiesen perdido si corrían como partidos pequeños independientes.</p>
+      <p>La segunda conclusión de este post es que la coordinación entre los candidatos y los votantes va a ser de suma importancia para que el VUNT funcione adecuadamente. La necesidad de coordinar con sus votantes va a ser especialmente importante para los partidos políticos que 1) son grandes y 2) tienen corrientes internas que compiten entre sí. Las corrientes internas de partidos grandes que tienen la capacidad de hacer que sus votantes voten de una manera coordinada y bien distribuida, van a ser los mayores beneficiados del nuevo sistema. Las corrientes internas de los partidos grandes que concentran sus votos en un solo candidato, van a salir perdiendo.</p>
+
+      <aside class="notas" aria-label="Notas">
+        <p id="nota-1"><a href="#ref-1" aria-label="Volver al texto">*</a> Estrictamente, el nombre correcto no es “lista abierta” sino lista cerrada pero desbloqueada. Esta distinción se hace en libros electorales muy técnicos, pero las listas puramente abiertas son muy poco frecuentes. Para facilitar, en este artículo cuando digo “listas abiertas” realmente me estoy refiriendo a lo que técnicamente se llamaría la “lista cerrada pero desbloqueada.”</p>
+      </aside>
+
+      <p class="volver"><a class="enlace-simple" href="../blog.html">← Volver al blog y los artículos</a></p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="pie">
+    <div class="envoltura pie-grid">
+      <div>
+        <h2 class="pie-titulo">Contacto</h2>
+        <p><a href="mailto:acarrizosa@gmail.com">acarrizosa@gmail.com</a></p>
+      </div>
+      <ul class="contacto" aria-label="Perfiles">
+        <li><a href="https://www.linkedin.com/in/andycarrizosa/">LinkedIn</a></li>
+        <li><a href="https://github.com/acarrizosa">GitHub</a></li>
+        <li><a href="https://scholar.google.com/citations?user=PXVpDvkAAAAJ&amp;hl=es">Google Scholar</a></li>
+        <li><a href="https://www.instagram.com/andycarrizosa/">Instagram</a></li>
+        <li><a href="../en/index.html" lang="en" hreflang="en">English</a></li>
+      </ul>
+      <p class="derechos">© 2026 Andrés Carrizosa</p>
+    </div>
+  </footer>
+</body>
+</html>
