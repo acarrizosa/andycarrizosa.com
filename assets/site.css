@@ -374,7 +374,7 @@ h1, h2, h3 { text-wrap: balance; }
 .filtro[aria-pressed="true"] .cuenta { color: inherit; opacity: 0.75; }
 .estado { font-family: var(--display); font-size: 0.92rem; color: var(--gris); margin-top: 0.85rem; }
 
-/* Tarjetas de la portada (Artículos mediáticos) */
+/* Tarjetas de la portada (Medios y prensa) */
 .tarjetas {
   list-style: none;
   margin: 0;
