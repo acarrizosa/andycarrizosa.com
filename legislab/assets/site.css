@@ -1,0 +1,263 @@
+/* LegisLab: página de inicio (andycarrizosa.com/legislab/). Las fuentes son las de andycarrizosa.com (/assets/fonts).
+   Sigue el estilo de andycarrizosa.com: papel claro con un leve tono verde, tinta verde casi negra,
+   verde yerba como color principal y ocre para subrayados. Títulos en Archivo ancha; textos en Faustina.
+   El texto va en español e inglés, uno al lado del otro. */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("../../assets/fonts/archivo-latin-wdth-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Faustina";
+  src: url("../../assets/fonts/faustina-latin-wght-normal.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --papel: #f5f7f4;
+  --tinta: #17201b;
+  --gris: #58635c;
+  --linea: #d7ded9;
+  --yerba: #2d5c44;
+  --ocre: #c4891e;
+  --sobre-yerba: #f5f7f4;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --texto: "Faustina", Georgia, "Times New Roman", serif;
+  --ancho: 72rem;
+  --canal: clamp(1rem, 4vw, 2.5rem);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --papel: #0f1512;
+    --tinta: #e4ebe6;
+    --gris: #a0ada5;
+    --linea: #28332d;
+    --yerba: #8dc4a5;
+    --ocre: #e2b252;
+    --sobre-yerba: #0f1512;
+    color-scheme: dark;
+  }
+}
+
+/* Base */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--texto);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-optical-sizing: auto;
+}
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+svg { max-width: 100%; }
+p { margin: 0; }
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-color: var(--ocre);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+a:hover { color: var(--yerba); }
+:focus-visible {
+  outline: 3px solid var(--yerba);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.saltar {
+  position: absolute;
+  left: -999rem;
+  top: 0.75rem;
+  background: var(--papel);
+  padding: 0.5rem 1rem;
+  font-family: var(--display);
+  z-index: 10;
+}
+.saltar:focus { left: 1rem; }
+
+.envoltura {
+  width: 100%;
+  max-width: var(--ancho);
+  margin-inline: auto;
+  padding-inline: var(--canal);
+}
+
+/* Cabecera */
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-block: 1.5rem;
+}
+.redes {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  align-self: center;
+}
+.redes a {
+  display: inline-flex;
+  color: var(--tinta);
+  padding: 0.25rem;
+  margin: -0.25rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.redes a:hover { color: var(--yerba); border-bottom-color: var(--ocre); }
+.redes svg { width: 1.2rem; height: 1.2rem; fill: currentColor; display: block; }
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  font-family: var(--display);
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+.nav a { text-decoration: none; padding-block: 0.25rem; }
+.nav a:hover { text-decoration: underline; text-decoration-color: var(--ocre); }
+
+/* Portada */
+.portada { padding-block: clamp(1.5rem, 4vw, 3rem); }
+.idiomas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+/* Los botones de las dos columnas quedan a la misma altura aunque un texto sea más largo. */
+.idioma { display: flex; flex-direction: column; }
+.nombre {
+  font-family: var(--display);
+  font-stretch: 125%;
+  font-weight: 800;
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+}
+.nombre span { display: block; }
+.rol {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  line-height: 1.35;
+  margin-bottom: 1.5rem;
+}
+.entrada {
+  font-size: 1.25rem;
+  line-height: 1.55;
+  max-width: 34em;
+}
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: auto;
+  padding-top: 2rem;
+}
+.boton {
+  display: inline-block;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid var(--yerba);
+  border-radius: 3px;
+}
+.boton-principal { background: var(--yerba); color: var(--sobre-yerba); }
+.boton-principal:hover {
+  color: var(--sobre-yerba);
+  background: color-mix(in srgb, var(--yerba) 82%, var(--tinta));
+  border-color: color-mix(in srgb, var(--yerba) 82%, var(--tinta));
+}
+.boton-secundario { color: var(--yerba); }
+.boton-secundario:hover { background: color-mix(in srgb, var(--yerba) 10%, transparent); }
+
+/* Pie */
+.pie {
+  border-top: 1px solid var(--linea);
+  padding-block: 1.5rem 2rem;
+  font-family: var(--display);
+  font-size: 0.98rem;
+}
+.pie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem 3rem;
+}
+.derechos { color: var(--gris); font-size: 0.9rem; }
+
+/* Pantallas angostas */
+@media (max-width: 54rem) {
+  .idiomas { grid-template-columns: minmax(0, 1fr); }
+  .idioma + .idioma { border-top: 1px solid var(--linea); padding-top: 2rem; }
+}
+
+/* Tutorial, debajo de las dos columnas */
+.tutorial { justify-content: center; padding-top: clamp(2rem, 4vw, 3rem); }
+
+/* Países y cámaras: un bloque por país; los bloques se acomodan en filas al sumar más. */
+.paises {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 2rem clamp(2rem, 5vw, 4.5rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--linea);
+}
+.pais-nombre {
+  font-family: var(--display);
+  font-stretch: 112%;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+  line-height: 1.2;
+  margin: 0 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--ocre);
+}
+.camaras {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.camaras li { margin: 0; }
+.boton-inactivo {
+  color: var(--gris);
+  border-color: var(--linea);
+  border-style: dashed;
+  cursor: not-allowed;
+}
