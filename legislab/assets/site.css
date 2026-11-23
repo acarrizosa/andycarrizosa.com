@@ -222,8 +222,8 @@ a:hover { color: var(--yerba); }
 .derechos { color: var(--gris); font-size: 0.9rem; }
 
 
-/* Tutorial, justo debajo del texto */
-.tutorial { padding-top: 1.5rem; }
+/* Tutorial, justo debajo del texto y centrado */
+.tutorial { justify-content: center; padding-top: 1.5rem; }
 
 /* Países y cámaras: un bloque por país; los bloques se acomodan en filas al sumar más. */
 .paises {
