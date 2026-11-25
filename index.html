@@ -43,7 +43,7 @@
   }
   </script>
 </head>
-<body>
+<body class="inicio">
   <a class="saltar" href="#contenido">Saltar al contenido</a>
 
   <header class="envoltura cabecera">
@@ -70,18 +70,8 @@
   </header>
 
   <main id="contenido">
-    <section class="envoltura portada" aria-labelledby="t-nombre">
-      <div>
-        <h1 class="nombre" id="t-nombre"><span>Andy</span> <span>Carrizosa</span></h1>
-        <p class="rol">Datos, política, finanzas, y economía. Basado en Asunción, Paraguay.</p>
-        <p class="entrada">
-          Utilizo datos para contar historias. Me interesan temas de política, de economía y del sistema financiero. Estoy enfocado en analizar Paraguay, Estados Unidos y América Latina. Administro la página de <a href="legislab/index.html">LegisLab</a> que se enfoca en aglomerar datos legislativos en el país y en la región.</p>
-        <p class="entrada">Tengo un doctorado en Ciencia Política de Rice University. Tengo experiencia privada en investigación de mercado, investigación financiera, investigación de experiencia del usuario, y análisis de Big Data utilizando Python, R y SQL.</p>
-        <div class="acciones">
-          <a class="boton boton-principal" href="blog.html">Medios y prensa</a>
-          <a class="boton boton-secundario" href="legislab/index.html">Datos en LegisLab</a>
-        </div>
-      </div>
+    <section class="envoltura portada portada-paneles" aria-labelledby="t-nombre">
+      <h1 class="nombre" id="t-nombre"><span>Andy</span> <span>Carrizosa</span></h1>
       <figure class="hemiciclo">
         <svg viewBox="-216 -216 432 232" role="img" aria-labelledby="t-hemiciclo">
           <title id="t-hemiciclo">Las 45 bancas del Senado paraguayo, dibujadas como un hemiciclo</title>
@@ -133,6 +123,61 @@
         </svg>
       </figure>
       <script src="assets/hemiciclo.js"></script>
+      <div class="portada-texto">
+        <p class="rol">Consultor en ciencia de datos, business intelligence y análisis político.</p>
+      </div>
+      <div class="paneles">
+        <section class="panel panel-datos" aria-labelledby="t-datos">
+          <h2 id="t-datos">Ciencia de datos y business intelligence</h2>
+          <p class="panel-intro">Desarrollo modelos de machine learning que aprenden del pasado para anticipar lo que viene.</p>
+          <ul class="areas">
+            <li class="area">
+              <svg class="area-icono" viewBox="0 0 60 46" aria-hidden="true" focusable="false"><circle cx="15.8" cy="4" r="3.75"/><circle cx="6.3" cy="7.1" r="3.75"/><circle cx="20.1" cy="14" r="3.75"/><circle cx="10.8" cy="15.8" r="3.75"/><circle class="ocre" cx="50" cy="7.7" r="3.75"/><circle class="ocre" cx="40.1" cy="9.6" r="3.75"/><circle class="ocre" cx="53.8" cy="17.7" r="3.75"/><circle class="ocre" cx="43.8" cy="19" r="3.75"/><circle class="hoja" cx="30.1" cy="30.9" r="3.75"/><circle class="hoja" cx="20.1" cy="33.3" r="3.75"/><circle class="hoja" cx="35.1" cy="40.1" r="3.75"/><circle class="hoja" cx="25.1" cy="42" r="3.75"/></svg>
+              <h3>Segmentación de clientes</h3>
+              <p class="pregunta">¿Qué grupos de clientes tengo?</p>
+            </li>
+            <li class="area">
+              <svg class="area-icono" viewBox="0 0 60 46" aria-hidden="true" focusable="false"><circle cx="3.8" cy="16" r="3.75"/><circle cx="13.8" cy="16" r="3.75"/><circle cx="23.8" cy="16" r="3.75"/><circle cx="33.8" cy="16" r="3.75"/><circle cx="3.8" cy="27.3" r="3.75"/><circle cx="13.8" cy="27.3" r="3.75"/><circle cx="23.8" cy="27.3" r="3.75"/><circle cx="33.8" cy="27.3" r="3.75"/><circle cx="3.8" cy="38.6" r="3.75"/><circle cx="13.8" cy="38.6" r="3.75"/><circle cx="23.8" cy="38.6" r="3.75"/><circle cx="33.8" cy="38.6" r="3.75"/><circle class="ocre" cx="46.3" cy="17.3" r="3.75"/><circle class="ocre" cx="56.2" cy="7.4" r="3.75"/></svg>
+              <h3>Fuga de clientes</h3>
+              <p class="pregunta">¿Qué clientes están por irse?</p>
+            </li>
+            <li class="area">
+              <svg class="area-icono" viewBox="0 0 60 46" aria-hidden="true" focusable="false"><circle cx="3.8" cy="38.6" r="3.75"/><circle cx="11.3" cy="34.8" r="3.75"/><circle cx="18.8" cy="36.2" r="3.75"/><circle cx="26.3" cy="28.6" r="3.75"/><circle cx="33.8" cy="26.1" r="3.75"/><circle class="ocre" cx="41.3" cy="19.9" r="3.75"/><circle class="ocre" cx="48.8" cy="14.9" r="3.75"/><circle class="ocre" cx="56.2" cy="7.4" r="3.75"/></svg>
+              <h3>Pronóstico de ventas</h3>
+              <p class="pregunta">¿Cuánto voy a vender el próximo mes?</p>
+            </li>
+            <li class="area">
+              <svg class="area-icono" viewBox="0 0 60 46" aria-hidden="true" focusable="false"><circle cx="3.8" cy="10.9" r="3.75"/><circle cx="15" cy="10.9" r="3.75"/><circle cx="26.2" cy="10.9" r="3.75"/><circle cx="48.6" cy="10.9" r="3.75"/><circle cx="3.8" cy="26" r="3.75"/><circle cx="15" cy="26" r="3.75"/><circle cx="26.2" cy="26" r="3.75"/><circle cx="37.4" cy="26" r="3.75"/><circle cx="48.6" cy="26" r="3.75"/><circle cx="3.8" cy="41" r="3.75"/><circle cx="15" cy="41" r="3.75"/><circle cx="26.2" cy="41" r="3.75"/><circle cx="37.4" cy="41" r="3.75"/><circle cx="48.6" cy="41" r="3.75"/><circle class="ocre" cx="37.4" cy="6.6" r="5.3"/></svg>
+              <h3>Detección de anomalías</h3>
+              <p class="pregunta">¿Qué operaciones se salen de lo normal?</p>
+            </li>
+          </ul>
+          <p class="panel-pie">Trayectoria en el sector privado en investigación de mercado, financiera y de experiencia del usuario. Utilizo Python, R y SQL.</p>
+        </section>
+        <section class="panel panel-politica" aria-labelledby="t-politica">
+          <h2 id="t-politica">Análisis político</h2>
+          <p class="panel-intro">Analizo con datos la política de Paraguay, Estados Unidos y América Latina.</p>
+          <ul class="areas">
+            <li class="area">
+              <svg class="area-icono" viewBox="0 0 60 46" aria-hidden="true" focusable="false"><circle cx="19.6" cy="35.4" r="3.75"/><circle cx="11.8" cy="35.4" r="3.75"/><circle cx="4" cy="35.4" r="3.75"/><circle cx="9" cy="20.1" r="3.75"/><circle cx="20.9" cy="19.6" r="3.75"/><circle cx="22" cy="10.7" r="3.75"/><circle cx="38" cy="10.7" r="3.75"/><circle class="ocre" cx="39.1" cy="19.6" r="3.75"/><circle class="ocre" cx="51" cy="20.1" r="3.75"/><circle class="ocre" cx="40.4" cy="35.4" r="3.75"/><circle class="ocre" cx="48.2" cy="35.4" r="3.75"/><circle class="ocre" cx="56" cy="35.4" r="3.75"/></svg>
+              <h3>Poder Legislativo</h3>
+              <p class="pregunta">¿Cómo se alinean los legisladores?</p>
+              <p>Administro <a href="legislab/index.html">LegisLab</a>, con datos del país y de la región.</p>
+            </li>
+            <li class="area">
+              <svg class="area-icono" viewBox="0 0 60 46" aria-hidden="true" focusable="false"><circle cx="3.8" cy="8" r="3.75"/><circle cx="16.9" cy="8" r="3.75"/><circle cx="30" cy="8" r="3.75"/><circle class="ocre" cx="43.1" cy="8" r="3.75"/><circle class="ocre" cx="56.2" cy="8" r="3.75"/><circle cx="3.8" cy="23" r="3.75"/><circle class="ocre" cx="16.9" cy="23" r="3.75"/><circle class="ocre" cx="30" cy="23" r="3.75"/><circle class="ocre" cx="43.1" cy="23" r="3.75"/><circle cx="56.2" cy="23" r="3.75"/><circle class="ocre" cx="3.8" cy="38" r="3.75"/><circle class="ocre" cx="16.9" cy="38" r="3.75"/><circle cx="30" cy="38" r="3.75"/><circle cx="43.1" cy="38" r="3.75"/><circle cx="56.2" cy="38" r="3.75"/></svg>
+              <h3>Estrategia</h3>
+              <p class="pregunta">¿Qué puede pasar y qué conviene hacer?</p>
+              <p>Asesoro en estrategia y análisis político.</p>
+            </li>
+          </ul>
+          <p class="panel-pie">Tengo un doctorado en Ciencia Política de Rice University.</p>
+        </section>
+      </div>
+      <div class="acciones">
+        <a class="boton boton-principal" href="blog.html">Medios y prensa</a>
+        <a class="boton boton-secundario" href="legislab/index.html">Datos en LegisLab</a>
+      </div>
     </section>
 
     <section class="envoltura seccion" aria-labelledby="t-libro">
