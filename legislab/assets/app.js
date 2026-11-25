@@ -40,7 +40,7 @@
       voteYes: 'A favor', voteNo: 'En contra', voteNa: 'Sin voto',
       symYes: 'a favor', symNo: 'en contra', symNa: 'sin voto',
       symLine: 'línea de corte del modelo; el lado sombreado es donde predice voto a favor',
-      clear: 'Quitar', inFavor: 'a favor', against: 'en contra', angle: 'ángulo', result: 'Resultado',
+      clear: 'Quitar', inFavor: 'a favor', against: 'en contra', angle: 'ángulo', result: 'Resultado', seeVote: 'ver este voto en',
       updated: 'Actualizado con los votos hasta el', updatedPeriod: 'último voto del período',
       months: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
     },
@@ -68,7 +68,7 @@
       voteYes: 'Yes', voteNo: 'No', voteNa: 'No vote',
       symYes: 'voted yes', symNo: 'voted no', symNa: 'no vote',
       symLine: 'the model’s cutting line; the shaded side is where it predicts a yes vote',
-      clear: 'Clear', inFavor: 'yes', against: 'no', angle: 'angle', result: 'Result',
+      clear: 'Clear', inFavor: 'yes', against: 'no', angle: 'angle', result: 'Result', seeVote: 'see this vote in',
       updated: 'Updated with votes through', updatedPeriod: 'last vote of the period',
       months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     }
@@ -98,6 +98,7 @@
   function periods() { return DATA.views[state.view].periods; }
   function rows() { return DATA.views[state.view].data[state.period] || []; }
   function periodLabel(p) { return p.replace('-', '–'); }
+  function voteName(b) { return b.v.replace(/^v_/, ''); }   // the votes of the Senate are v_ and their number in silpy
   function partyName(p) { return p.code === 'na' ? t('noParty') : (p.name || p.code); }
   function longDate(iso) {   // 2026-11-05 -> 5 de noviembre de 2026 / 5 November 2026
     if (!iso) return '';
@@ -390,7 +391,7 @@
     var small = '<span style="color:' + th.gray + ';font-size:13px">';
     var titleText = (state.view === 'session' ? t('session') : t('year')) + ' ' + periodLabel(state.period) +
       '  ' + small + rows().length + ' ' + legislator('many') + '</span>';
-    if (bill) titleText += '  ' + small + '· ' + bill.f + ' · ' + bill.v + '</span>';
+    if (bill) titleText += '  ' + small + '· ' + bill.f + ' · ' + voteName(bill) + '</span>';
     return {
       title: { text: titleText, x: 0, xanchor: 'left', font: { size: 16, color: th.ink } },
       paper_bgcolor: th.paper, plot_bgcolor: th.paper,
@@ -428,7 +429,7 @@
     return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
   function billHaystack(b) {
-    if (!b._h) b._h = normalize(b.t + ' ' + b.f + ' ' + b.v + ' ' + b.r + ' ' + b.f.split('-').reverse().join('/') + ' ' + b.f.split('-').reverse().join('-'));
+    if (!b._h) b._h = normalize(b.t + ' ' + b.f + ' ' + b.v + ' ' + b.r + ' ' + (b.e || '') + ' ' + b.f.split('-').reverse().join('/') + ' ' + b.f.split('-').reverse().join('-'));
     return b._h;
   }
   function searchBills(bills, q) {
@@ -466,7 +467,7 @@
       var li = document.createElement('li');
       li.setAttribute('role', 'option'); li.setAttribute('data-vote', b.v); li.id = 'bill-opt-' + i;
       var d = document.createElement('span'); d.className = 'r-date'; d.textContent = b.f;
-      var tt = document.createElement('span'); tt.className = 'r-title'; tt.textContent = b.t || (t('untitled') + ' ' + b.v);
+      var tt = document.createElement('span'); tt.className = 'r-title'; tt.textContent = b.t || (t('untitled') + ' ' + voteName(b));
       var c = document.createElement('span'); c.className = 'r-count'; c.textContent = b.ye + ' – ' + b.na;
       li.appendChild(d); li.appendChild(tt); li.appendChild(c);
       li.addEventListener('mousedown', function (e) { e.preventDefault(); selectBill(b.v); });
@@ -511,11 +512,19 @@
     billInfoEl.hidden = !bill;
     document.querySelectorAll('.col-vote').forEach(function (el) { el.hidden = !bill; });
     if (!bill) return;
-    $('#bill-title').textContent = bill.t || (t('untitled') + ' ' + bill.v);
-    var meta = bill.f + ' · ' + bill.v + ' · ' + bill.ye + ' ' + t('inFavor') + ', ' + bill.na + ' ' + t('against');
+    $('#bill-title').textContent = bill.t || (t('untitled') + ' ' + voteName(bill));
+    var meta = bill.f + ' · ' + voteName(bill) + ' · ' + bill.ye + ' ' + t('inFavor') + ', ' + bill.na + ' ' + t('against');
     if (bill.r) meta += ' · ' + t('result') + ': ' + bill.r;
     meta += ' · ' + t('angle') + ' ' + bill.a + '°';
     $('#bill-meta').textContent = meta;
+    if (bill.q && META.voteLink) {   // the page of this vote in silpy
+      var link = document.createElement('a');
+      link.href = META.voteLink.url + encodeURIComponent(bill.q);
+      link.target = '_blank'; link.rel = 'noopener';
+      link.textContent = t('seeVote') + ' ' + META.voteLink.name;
+      $('#bill-meta').appendChild(document.createTextNode(' · '));
+      $('#bill-meta').appendChild(link);
+    }
   }
 
   // ---- key and table ----------------------------------------------------------------

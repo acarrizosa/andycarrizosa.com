@@ -118,7 +118,7 @@ h1 { font-family: var(--display); font-stretch: 112%; font-weight: 700; font-siz
 .bill-info[hidden] { display: none; }
 .bill-info { display: flex; gap: 12px; align-items: flex-start; justify-content: space-between; padding: 10px 12px; margin: 0 0 8px; background: var(--suave); border: 1px solid var(--linea); border-radius: var(--radio); }
 .bill-text { min-width: 0; }
-.bill-title { margin: 0 0 3px; font-weight: 600; font-size: .98rem; line-height: 1.35; }
+.bill-title { margin: 0 0 3px; font-weight: 600; font-size: .98rem; line-height: 1.35; max-height: 6.8em; overflow-y: auto; }   /* five lines: some votes are on several bills and their title is very long */
 .bill-meta { margin: 0 0 6px; color: var(--gris); font-family: var(--display); font-size: .85rem; }
 .bill-symbols { margin: 0; color: var(--gris); font-family: var(--display); font-size: .8rem; display: flex; flex-wrap: wrap; gap: 2px 6px; align-items: center; }
 .bill-symbols .sym { display: inline-block; font-weight: 700; color: var(--tinta); line-height: 1; margin-left: 8px; }

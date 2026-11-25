@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puntos ideales · Cámara de Senadores del Paraguay · LegisLab</title>
+<meta name="description" content="Puntos ideales de los senadores del Paraguay por sesión y por año, con las líneas de corte de cada proyecto. Ideal points of Paraguay's senators by session and year, with the cutting line of every bill.">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/app.css">
+<!-- Plotly draws the scatterplot. Pinned version. To work offline, download this file into
+     assets/ and change src to "../../assets/plotly-2.35.2.min.js". -->
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+<!-- The ideal points of this chamber, made by app/paraguay_senadores.R. The bills of each
+     period are in data/bills/ and are loaded when you search for one. -->
+<script src="data/ideals.js" charset="utf-8"></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido" data-i18n="skip">Saltar al contenido</a>
+
+  <!-- the same header as the LegisLab landing page (legislab/index.html) -->
+  <header class="envoltura cabecera">
+    <nav class="redes" aria-label="Redes">
+      <a href="https://www.linkedin.com/in/andycarrizosa/" aria-label="LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://github.com/acarrizosa" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      <a href="https://scholar.google.com/citations?user=PXVpDvkAAAAJ&amp;hl=es" aria-label="Google Scholar" title="Google Scholar">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/andycarrizosa/" aria-label="Instagram" title="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zM7.5 4h9A3.5 3.5 0 0 1 20 7.5v9a3.5 3.5 0 0 1-3.5 3.5h-9A3.5 3.5 0 0 1 4 16.5v-9A3.5 3.5 0 0 1 7.5 4zM12 7a5 5 0 1 0 0 10a5 5 0 1 0 0-10zM12 9a3 3 0 1 0 0 6a3 3 0 1 0 0-6zM17.5 5.25a1.25 1.25 0 1 0 0 2.5a1.25 1.25 0 1 0 0-2.5z"/></svg>
+      </a>
+    </nav>
+    <nav class="nav" aria-label="Principal">
+      <a href="../../index.html">LegisLab</a>
+      <a href="../../../index.html">Andy Carrizosa</a>
+    </nav>
+  </header>
+
+  <main id="contenido" class="envoltura app">
+    <header class="app-header">
+      <div>
+        <h1 id="app-title"></h1>
+        <p class="subtitle" id="app-subtitle"></p>
+      </div>
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="es" class="is-active" aria-pressed="true">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </header>
+
+    <form class="controls" onsubmit="return false">
+      <fieldset class="seg" id="view-switch">
+        <legend class="sr-only" data-i18n="view">Vista</legend>
+        <label><input type="radio" name="view" value="session" checked><span data-i18n="bySession">Por sesión</span></label>
+        <label><input type="radio" name="view" value="year"><span data-i18n="byYear">Por año</span></label>
+      </fieldset>
+
+      <div class="period">
+        <button type="button" id="prev" class="step" aria-label="Anterior" title="Anterior">&#8249;</button>
+        <label class="sr-only" for="period" data-i18n="period">Período</label>
+        <select id="period"></select>
+        <button type="button" id="next" class="step" aria-label="Siguiente" title="Siguiente">&#8250;</button>
+      </div>
+
+      <label class="check"><input type="checkbox" id="ci"><span data-i18n="ci">Intervalos de credibilidad (95%)</span></label>
+      <label class="check"><input type="checkbox" id="winrate"><span data-i18n="winrate">Tamaño = tasa de victoria</span></label>
+    </form>
+
+    <form class="controls controls-search" onsubmit="return false">
+      <div class="search">
+        <label class="sr-only" for="bill-search" data-i18n="searchLabel">Buscar un proyecto</label>
+        <input id="bill-search" type="search" autocomplete="off" spellcheck="false"
+               role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="bill-results"
+               placeholder="Buscar un proyecto por título, fecha o número de voto…">
+        <ul id="bill-results" role="listbox" hidden></ul>
+      </div>
+    </form>
+
+    <section id="bill-info" class="bill-info" hidden aria-live="polite">
+      <div class="bill-text">
+        <p class="bill-title" id="bill-title"></p>
+        <p class="bill-meta" id="bill-meta"></p>
+        <p class="bill-symbols">
+          <span class="sym sym-yes">+</span> <span data-i18n="symYes">a favor</span>
+          <span class="sym sym-no">−</span> <span data-i18n="symNo">en contra</span>
+          <span class="sym sym-na">•</span> <span data-i18n="symNa">sin voto</span>
+          <span class="sym sym-line"></span> <span data-i18n="symLine">línea de corte del modelo; el lado sombreado es donde predice voto a favor</span>
+        </p>
+      </div>
+      <button type="button" id="bill-clear" class="bill-clear" data-i18n="clear">Quitar</button>
+    </section>
+
+    <section class="plot-wrap">
+      <div id="plot" role="img" aria-label="Diagrama de dispersión de puntos ideales"></div>
+    </section>
+
+    <section class="key" aria-labelledby="key-title">
+      <h2 id="key-title" class="key-title" data-i18n="key">Partidos</h2>
+      <ul id="key-list" class="key-list"></ul>
+      <p class="hint" data-i18n="hint">Pase el cursor sobre un punto para ver el nombre del senador. Haga clic en un partido de la leyenda del gráfico para ocultarlo o mostrarlo.</p>
+    </section>
+
+    <details class="table-wrap">
+      <summary data-i18n="table">Ver tabla de datos</summary>
+      <div class="table-scroll">
+        <table id="table">
+          <thead><tr>
+            <th id="th-name"></th>
+            <th data-i18n="thParty">Partido</th>
+            <th class="col-vote" data-i18n="thVote" hidden>Voto</th>
+            <th class="num" data-i18n="thX">Dim. 1</th>
+            <th class="num" data-i18n="thXci">IC 95% dim. 1</th>
+            <th class="num" data-i18n="thY">Dim. 2</th>
+            <th class="num" data-i18n="thYci">IC 95% dim. 2</th>
+            <th class="num" data-i18n="thWin">Tasa de victoria</th>
+            <th class="num" data-i18n="thVotes">Votos</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </details>
+
+    <section class="notes">
+      <p id="updated" class="updated"></p>
+      <p id="source"></p>
+    </section>
+  </main>
+
+  <!-- the same footer as the LegisLab landing page (legislab/index.html) -->
+  <footer class="pie">
+    <div class="envoltura pie-grid">
+      <p><a href="../../index.html">LegisLab</a></p>
+      <p class="derechos">© <span id="year">2026</span> Andy Carrizosa</p>
+    </div>
+  </footer>
+  <script src="../../assets/app.js"></script>
+</body>
+</html>
