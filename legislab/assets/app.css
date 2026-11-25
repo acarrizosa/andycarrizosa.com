@@ -1,17 +1,17 @@
-/* Ideal points app. The tokens, the header and the footer are the ones of the LegisLab landing page
-   (legislab/assets/site.css): light paper with a hint of green, near-black green ink, yerba
+/* Ideal points app. The tokens, the header and the footer are the ones of legislab.org
+   (assets/site.css there): light paper with a hint of green, near-black green ink, yerba
    green as the main color and ochre for underlines. The app pages are always light, whatever
    the system setting (only the landing page of the site has a dark variant), and the figure
    itself is always white. Archivo for titles and controls, Faustina for text. */
 
 @font-face {
   font-family: "Archivo";
-  src: url("../../assets/fonts/archivo-latin-wdth-normal.woff2") format("woff2");
+  src: url("https://www.legislab.org/assets/fonts/archivo-latin-wdth-normal.woff2") format("woff2");
   font-weight: 100 900; font-stretch: 62% 125%; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: "Faustina";
-  src: url("../../assets/fonts/faustina-latin-wght-normal.woff2") format("woff2");
+  src: url("https://www.legislab.org/assets/fonts/faustina-latin-wght-normal.woff2") format("woff2");
   font-weight: 300 800; font-style: normal; font-display: swap;
 }
 
@@ -112,7 +112,7 @@ h1 { font-family: var(--display); font-stretch: 112%; font-weight: 700; font-siz
 #bill-results .r-date { color: var(--gris); font-variant-numeric: tabular-nums; white-space: nowrap; }
 #bill-results .r-title { color: var(--tinta); font-family: var(--texto); font-size: .95rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 #bill-results .r-count { color: var(--gris); white-space: nowrap; font-variant-numeric: tabular-nums; }
-#bill-results .r-note { grid-column: 1 / -1; color: var(--gris); cursor: default; }
+#bill-results .r-note { display: block; color: var(--gris); cursor: default; }
 #bill-results .r-note:hover { background: transparent; }
 
 .bill-info[hidden] { display: none; }

@@ -3,7 +3,7 @@
    Each chamber's page loads data/ideals.js (window.LEGISLAB_DATA, with the labels in
    meta) and, on demand, data/bills/VIEW_PERIOD.js (window.LEGISLAB_BILLS[view/period]),
    both made by app/make_app_data.R. Everything runs in the browser. The page is always
-   light, with the light palette of the LegisLab landing page, and the figure itself is white. */
+   light, with the light palette of legislab.org, and the figure itself is white. */
 (function () {
   'use strict';
 
@@ -36,6 +36,9 @@
       loadError: 'No se pudieron cargar los proyectos de este período.',
       noResults: 'Ningún proyecto coincide.',
       moreResults: 'Hay más resultados: escriba más para acotar la búsqueda.',
+      loadingOthers: 'Buscando el número en los otros períodos…',
+      otherPeriod: 'Es de otro período, {period}. Al elegirlo se cambia a ese período.',
+      numberHint: 'En {site} el número de un voto es el de la dirección de su página, no el de su PDF. Los votos casi unánimes no están aquí: el modelo los deja fuera y no tienen línea de corte.',
       untitled: '(sin título)',
       voteYes: 'A favor', voteNo: 'En contra', voteNa: 'Sin voto',
       symYes: 'a favor', symNo: 'en contra', symNa: 'sin voto',
@@ -64,6 +67,9 @@
       loadError: 'The bills of this period could not be loaded.',
       noResults: 'No bill matches.',
       moreResults: 'There are more results: type more to narrow the search.',
+      loadingOthers: 'Looking for the number in the other periods…',
+      otherPeriod: 'It is from another period, {period}. Picking it switches to that period.',
+      numberHint: 'In {site} the number of a vote is the one in the address of its page, not the one of its PDF. Nearly unanimous votes are not here: the model leaves them out and they have no cutting line.',
       untitled: '(no title)',
       voteYes: 'Yes', voteNo: 'No', voteNa: 'No vote',
       symYes: 'voted yes', symNo: 'voted no', symNa: 'no vote',
@@ -432,15 +438,52 @@
     if (!b._h) b._h = normalize(b.t + ' ' + b.f + ' ' + b.v + ' ' + b.r + ' ' + (b.e || '') + ' ' + b.f.split('-').reverse().join('/') + ' ' + b.f.split('-').reverse().join('-'));
     return b._h;
   }
+  // the words that were typed. The address of the page of a vote in silpy counts as its number
+  var linkEnd = META.voteLink ? normalize(META.voteLink.url).match(/[^\/]*\/?$/)[0] : '';   // votacion/
+  function queryWords(q) {
+    return normalize(q).split(/\s+/).filter(Boolean).map(function (w) {
+      var at = linkEnd ? w.indexOf(linkEnd) : -1;
+      var n = at < 0 ? null : w.slice(at + linkEnd.length).match(/^\d+/);
+      return n ? n[0] : w;
+    });
+  }
+  // the number in silpy counts from its start and with 5 digits or more, so that years and numbers of
+  // laws don't bring it up. The number in the name of a document of silpy (VOTACION-103548.pdf) is
+  // another one, that isn't in the data
+  function hasWord(b, w) {
+    return billHaystack(b).indexOf(w) >= 0 || (!!b.q && /^\d{5,}$/.test(w) && b.q.indexOf(w) === 0);
+  }
   function searchBills(bills, q) {
-    var tokens = normalize(q).split(/\s+/).filter(Boolean);
+    var words = queryWords(q);
     var out = [];
     for (var i = 0; i < bills.length && out.length <= MAX_RESULTS; i++) {
-      var h = billHaystack(bills[i]), ok = true;
-      for (var j = 0; j < tokens.length; j++) if (h.indexOf(tokens[j]) < 0) { ok = false; break; }
+      var ok = true;
+      for (var j = 0; j < words.length; j++) if (!hasWord(bills[i], words[j])) { ok = false; break; }
       if (ok) out.push(bills[i]);
     }
     return out;
+  }
+  // the number in silpy, if that is all that was typed. They have 6 digits, and the ones of the bills 7
+  function onlyNumber(q) {
+    var words = queryWords(q);
+    return META.voteLink && words.length === 1 && /^\d{6}$/.test(words[0]) ? words[0] : '';
+  }
+  // a number in silpy is of one vote, in one period. When it isn't in the period on the screen this looks for
+  // it in the others, from the last one back, and stops when the periods with numbers end (silpy starts in 2018)
+  function findNumber(number, cb) {
+    var view = state.view, ps = periods().slice().reverse(), any = false, failed = null;
+    function look(i) {
+      if (i >= ps.length) { cb(failed, null); return; }
+      loadBills(view, ps[i], function (err, bills) {
+        var has = false, hit = null;
+        if (err) failed = err;
+        (bills || []).forEach(function (b) { if (b.q) has = true; if (b.q === number) hit = b; });
+        if (hit) cb(null, hit, ps[i]);
+        else if (any && bills && !has) cb(failed, null);
+        else { any = any || has; look(i + 1); }
+      });
+    }
+    look(0);
   }
   function resultNote(text) {
     resultsEl.textContent = '';
@@ -460,21 +503,36 @@
       return;
     }
     var found = searchBills(bills, q);
+    if (found.length) { listResults(found, state.period); return; }
+    activeResult = -1;
+    var number = onlyNumber(q);
+    if (!number) { resultNote(noResults(q)); return; }
+    resultNote(t('loadingOthers'));
+    findNumber(number, function (err, bill, period) {
+      if (searchEl.value !== q || document.activeElement !== searchEl) return;   // something else was typed, or the box was left
+      if (bill) listResults([bill], period); else resultNote(err ? t('loadError') : noResults(q));
+    });
+  }
+  function noResults(q) {
+    var number = onlyNumber(q) || (META.voteLink && /votacion-\d/.test(normalize(q)));   // or the name of its document
+    return t('noResults') + (number ? ' ' + t('numberHint').replace('{site}', META.voteLink.name) : '');
+  }
+  function listResults(found, period) {
     resultsEl.textContent = '';
     activeResult = -1;
-    if (!found.length) { resultNote(t('noResults')); return; }
     found.slice(0, MAX_RESULTS).forEach(function (b, i) {
       var li = document.createElement('li');
-      li.setAttribute('role', 'option'); li.setAttribute('data-vote', b.v); li.id = 'bill-opt-' + i;
+      li.setAttribute('role', 'option'); li.setAttribute('data-vote', b.v); li.setAttribute('data-period', period); li.id = 'bill-opt-' + i;
       var d = document.createElement('span'); d.className = 'r-date'; d.textContent = b.f;
       var tt = document.createElement('span'); tt.className = 'r-title'; tt.textContent = b.t || (t('untitled') + ' ' + voteName(b));
       var c = document.createElement('span'); c.className = 'r-count'; c.textContent = b.ye + ' – ' + b.na;
       li.appendChild(d); li.appendChild(tt); li.appendChild(c);
-      li.addEventListener('mousedown', function (e) { e.preventDefault(); selectBill(b.v); });
+      li.addEventListener('mousedown', function (e) { e.preventDefault(); selectBill(b.v, period); });
       resultsEl.appendChild(li);
     });
-    if (found.length > MAX_RESULTS) {
-      var more = document.createElement('li'); more.className = 'r-note'; more.textContent = t('moreResults');
+    if (found.length > MAX_RESULTS || period !== state.period) {
+      var more = document.createElement('li'); more.className = 'r-note';
+      more.textContent = period !== state.period ? t('otherPeriod').replace('{period}', periodLabel(period)) : t('moreResults');
       resultsEl.appendChild(more);
     }
     resultsEl.hidden = false;
@@ -495,7 +553,8 @@
     searchEl.setAttribute('aria-activedescendant', opts[activeResult].id);
     opts[activeResult].scrollIntoView({ block: 'nearest' });
   }
-  function selectBill(v) {
+  function selectBill(v, period) {
+    state.period = period;
     state.bill = v;
     hideResults();
     searchEl.blur();
@@ -623,7 +682,7 @@
     else if (e.key === 'Enter') {
       var opts = resultsEl.querySelectorAll('li[role=option]');
       var pick = activeResult >= 0 ? opts[activeResult] : opts[0];
-      if (pick) { e.preventDefault(); selectBill(pick.getAttribute('data-vote')); }
+      if (pick) { e.preventDefault(); selectBill(pick.getAttribute('data-vote'), pick.getAttribute('data-period')); }
     }
     else if (e.key === 'Escape') { hideResults(); if (!searchEl.value) searchEl.blur(); }
   });
